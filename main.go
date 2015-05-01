@@ -61,7 +61,7 @@ func main() {
 			Address: *rethinkdbAddress,
 		})
 		if err != nil {
-			log.WithField("error", err.Error).Fatal("Unable to connect to RethinkDB")
+			log.WithField("error", err.Error()).Fatal("Unable to connect to RethinkDB")
 		}
 
 		r.DbCreate(*rethinkdbDatabase).Exec(session)
