@@ -22,6 +22,7 @@ func initSender(username, password string) {
 	api, err := client.New(*apiURL, 0)
 	if err != nil {
 		log.WithField("error", err.Error()).Fatal("Unable to connect to the Lavaboom API")
+		return
 	}
 
 	token, err := api.CreateToken(&routes.TokensCreateRequest{
@@ -31,6 +32,7 @@ func initSender(username, password string) {
 	})
 	if err != nil {
 		log.WithField("error", err.Error()).Fatal("Unable to sign into Lavaboom's API")
+		return
 	}
 
 	api.Headers["Authorization"] = "Bearer " + token.ID
@@ -41,6 +43,8 @@ func initSender(username, password string) {
 	}
 
 	cons.AddHandler(nsq.HandlerFunc(func(m *nsq.Message) error {
+		log.Print("Handling sender event")
+
 		var ev *SenderEvent
 		if err := json.Unmarshal(m.Body, &ev); err != nil {
 			return err

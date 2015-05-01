@@ -23,6 +23,8 @@ func initChurner(change chan struct{}) {
 		log.WithField("error", err.Error()).Fatal("Unable to consume the hub topic")
 	}
 	cons.AddHandler(nsq.HandlerFunc(func(m *nsq.Message) error {
+		log.Print("Handling hub event")
+
 		var ev *HubEvent
 		if err := json.Unmarshal(m.Body, &ev); err != nil {
 			return err
