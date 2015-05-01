@@ -41,7 +41,8 @@ func initHub(change chan struct{}) {
 	for {
 		// TODO: Use MultiPublish
 		stateLock.Lock()
-		for _, timer := range state {
+		timersToDelete := []int{}
+		for id, timer := range state {
 			if timer.Time.Before(time.Now()) {
 				// Encode the sender event
 				body, err := json.Marshal(&SenderEvent{
@@ -65,9 +66,17 @@ func initHub(change chan struct{}) {
 					log.WithField("error", err.Error()).Error("Unable to remove an event from database")
 					continue
 				}
+
+				timersToDelete = append(timersToDelete, id)
 			} else {
 				break
 			}
+		}
+		for y, x := range timersToDelete {
+			i := x - y
+			copy(state[i:], state[i+1:])
+			state[len(state)-1] = nil
+			state = state[:len(state)-1]
 		}
 		stateLock.Unlock()
 

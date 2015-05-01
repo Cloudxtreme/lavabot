@@ -27,12 +27,19 @@ func initChurner(change chan struct{}) {
 
 		var ev *HubEvent
 		if err := json.Unmarshal(m.Body, &ev); err != nil {
+			log.Print("Erroring - invalid body")
 			return err
 		}
 
+		log.Printf("Type of the hub event is %s", ev.Type)
+
 		switch ev.Type {
 		case "onboarding":
+			log.Print("Diving into the lock")
+
 			stateLock.Lock()
+
+			log.Print("I'm inside!")
 
 			// Four emails in total
 			timers := []*Timer{

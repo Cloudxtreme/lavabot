@@ -58,7 +58,7 @@ func initSender(username, password string) {
 
 		templateLock.RLock()
 		// Check if we have such template
-		if x, ok := templates[ev.Name]; !ok || len(x) > 0 {
+		if x, ok := templates[ev.Name]; !ok || len(x) == 0 {
 			templateLock.RUnlock()
 			return errors.New("No such template")
 		}

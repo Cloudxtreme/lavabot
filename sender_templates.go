@@ -74,6 +74,8 @@ func parseTemplate(tpl *Template) {
 	// Put it into the templates storage
 	templates[tpl.Name][version.String()] = tpl
 	templateVersions[tpl.Name] = append(templateVersions[tpl.Name], version)
+
+	log.Printf("Loaded template %s %s", tpl.Name, tpl.Version)
 }
 
 func loadTemplates() {
