@@ -1,9 +1,10 @@
 package main
 
 import (
+	"strings"
+
 	"github.com/Sirupsen/logrus"
 	r "github.com/dancannon/gorethink"
-	"github.com/lavab/api/client"
 	"github.com/namsral/flag"
 )
 
@@ -31,12 +32,14 @@ var (
 	securityVersion       = flag.String("security_version", "1.0.0", "Version of the security info template to use")
 	whatsUpName           = flag.String("whatsup_name", "whatsup", "Name of the how's it going template to use")
 	whatsUpVersion        = flag.String("whatsup_version", "1.0.0", "Version of the how's it going template to use")
+
+	usernames = flag.String("usernames", "", "Usernames to use in the sender")
+	passwords = flag.String("passwords", "", "Passwords to use in the sender")
 )
 
 var (
 	session *r.Session
 	log     *logrus.Logger
-	api     *client.Client
 )
 
 func main() {
@@ -69,13 +72,13 @@ func main() {
 		r.Db(*rethinkdbDatabase).Table("hub_state").IndexCreate("time").Exec(session)
 	}
 
-	if *enableSender || *enableReceiver {
+	/*if *enableSender || *enableReceiver {
 		var err error
 		api, err = client.New(*apiURL, 0)
 		if err != nil {
 			log.WithField("error", err.Error).Fatal("Unable to connect to the Lavaboom API")
 		}
-	}
+	}*/
 
 	if *enableReceiver {
 		go initReceiver()
@@ -83,7 +86,17 @@ func main() {
 
 	if *enableSender {
 		go initTemplates()
-		go initSender()
+
+		up := strings.Split(*usernames, ",")
+		pp := strings.Split(*passwords, ",")
+
+		if len(up) != len(pp) {
+			log.Fatal("usernames flag has more parts than the passwords flag")
+		}
+
+		for i, username := range up {
+			go initSender(username, pp[i])
+		}
 	}
 
 	if *enableHub {
