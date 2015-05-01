@@ -38,7 +38,11 @@ func initHub(change chan struct{}) {
 	sort.Sort(result)
 	state = result
 
+	log.Printf("%+v", result)
+
 	for {
+		log.Print("Handling hub message")
+
 		// TODO: Use MultiPublish
 		stateLock.Lock()
 		timersToDelete := []int{}
@@ -61,12 +65,8 @@ func initHub(change chan struct{}) {
 					continue
 				}
 
-				// Delete it from RDB state
-				if err := r.Db(*rethinkdbDatabase).Table("hub_state").Get(timer.ID).Delete().Exec(session); err != nil {
-					log.WithField("error", err.Error()).Error("Unable to remove an event from database")
-					continue
-				}
-
+				// Delete it from RDB and the state
+				r.Db(*rethinkdbDatabase).Table("hub_state").Get(timer.ID).Delete().Exec(session)
 				timersToDelete = append(timersToDelete, id)
 			} else {
 				break

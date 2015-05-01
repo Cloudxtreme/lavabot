@@ -102,7 +102,7 @@ func initChurner(change chan struct{}) {
 
 			// Sort it and ping the worker
 			sort.Sort(state)
-			<-change
+			change <- struct{}{}
 			stateLock.Unlock()
 		default:
 			return errors.New("Not implemented")
