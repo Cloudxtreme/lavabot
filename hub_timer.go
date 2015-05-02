@@ -53,6 +53,7 @@ func initHub(change chan struct{}) {
 					Name:    timer.Name,
 					Version: timer.Version,
 					To:      timer.To,
+					From:    timer.From,
 					Input:   timer.Input,
 				})
 				if err != nil {

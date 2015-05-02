@@ -50,7 +50,7 @@ func initChurner(change chan struct{}) {
 					Name:    *welcomeName,
 					Version: *welcomeVersion,
 					Sender:  "hello",
-					From:    "Felix from Lavaboom",
+					From:    "Felix from Lavaboom <hello@lavaboom.com>",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,
@@ -63,7 +63,7 @@ func initChurner(change chan struct{}) {
 					Name:    *gettingStartedName,
 					Version: *gettingStartedVersion,
 					Sender:  "hello",
-					From:    "Christine from Lavaboom",
+					From:    "Christine from Lavaboom <hello@lavaboom.com>",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,
@@ -72,11 +72,11 @@ func initChurner(change chan struct{}) {
 				// 3. Security information
 				&Timer{
 					ID:      uniuri.NewLen(uniuri.UUIDLen),
-					Time:    time.Now().Add(time.Minute * 3),
+					Time:    time.Now().Add(time.Minute * 2),
 					Name:    *securityName,
 					Version: *securityVersion,
 					Sender:  "hello",
-					From:    "Andrei from Lavaboom",
+					From:    "Andrei from Lavaboom <hello@lavaboom.com>",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,
@@ -85,11 +85,11 @@ func initChurner(change chan struct{}) {
 				// 4. How's it going?
 				&Timer{
 					ID:      uniuri.NewLen(uniuri.UUIDLen),
-					Time:    time.Now().Add(time.Minute * 30),
+					Time:    time.Now().Add(time.Minute * 15),
 					Name:    *whatsUpName,
 					Version: *whatsUpVersion,
 					Sender:  "hello",
-					From:    "Lavabot from Lavaboom",
+					From:    "Lavabot from Lavaboom <hello@lavaboom.com>",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,

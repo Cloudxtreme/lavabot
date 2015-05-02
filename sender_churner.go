@@ -146,13 +146,16 @@ func initSender(username, password string) {
 			// Hash the body
 			bodyHash := sha256.Sum256(body.Bytes())
 
+			// Parse the from address
+			from, err := mail.ParseAddress(ev.From)
+			if err != nil {
+				return err
+			}
+
 			// Manifest definition
 			manifest := &man.Manifest{
 				Version: semver.Version{1, 0, 0, nil, nil},
-				From: &mail.Address{
-					Name:    ev.From,
-					Address: username + "@lavaboom.com",
-				},
+				From:    from,
 				To: []*mail.Address{
 					{
 						Address: ev.To[0],
@@ -188,6 +191,7 @@ func initSender(username, password string) {
 			// Send the email
 			resp, err := api.CreateEmail(&routes.EmailsCreateRequest{
 				Kind:        "manifest",
+				From:        ev.From,
 				To:          ev.To,
 				Body:        string(ebody),
 				Manifest:    string(eman),
