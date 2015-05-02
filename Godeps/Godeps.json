@@ -101,48 +101,48 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/api/cache",
-			"Comment": "2.0.0-14-g26b692c",
-			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
+			"Comment": "2.0.0-15-gb423c8c",
+			"Rev": "b423c8cf6a2e5129de6c068a4019d6b1d3eb981d"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/client",
-			"Comment": "2.0.0-14-g26b692c",
-			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
+			"Comment": "2.0.0-15-gb423c8c",
+			"Rev": "b423c8cf6a2e5129de6c068a4019d6b1d3eb981d"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/db",
-			"Comment": "2.0.0-14-g26b692c",
-			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
+			"Comment": "2.0.0-15-gb423c8c",
+			"Rev": "b423c8cf6a2e5129de6c068a4019d6b1d3eb981d"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/env",
-			"Comment": "2.0.0-14-g26b692c",
-			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
+			"Comment": "2.0.0-15-gb423c8c",
+			"Rev": "b423c8cf6a2e5129de6c068a4019d6b1d3eb981d"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/factor",
-			"Comment": "2.0.0-14-g26b692c",
-			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
+			"Comment": "2.0.0-15-gb423c8c",
+			"Rev": "b423c8cf6a2e5129de6c068a4019d6b1d3eb981d"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/models",
-			"Comment": "2.0.0-14-g26b692c",
-			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
+			"Comment": "2.0.0-15-gb423c8c",
+			"Rev": "b423c8cf6a2e5129de6c068a4019d6b1d3eb981d"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/routes",
-			"Comment": "2.0.0-14-g26b692c",
-			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
+			"Comment": "2.0.0-15-gb423c8c",
+			"Rev": "b423c8cf6a2e5129de6c068a4019d6b1d3eb981d"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/utils",
-			"Comment": "2.0.0-14-g26b692c",
-			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
+			"Comment": "2.0.0-15-gb423c8c",
+			"Rev": "b423c8cf6a2e5129de6c068a4019d6b1d3eb981d"
 		},
 		{
 			"ImportPath": "github.com/lavab/mailer/shared",
-			"Comment": "0.2.0-11-g1b75b21",
-			"Rev": "1b75b2198688445cbab96cc7065a5566cb46d3de"
+			"Comment": "0.2.0-12-gcdac922",
+			"Rev": "cdac9225c202f7bbe072e456a68261d79b92b023"
 		},
 		{
 			"ImportPath": "github.com/lavab/pgp-manifest-go",
