@@ -101,43 +101,52 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/api/cache",
-			"Comment": "2.0.0-12-g84af03b",
-			"Rev": "84af03bdf12c624d1c30578f7f2f42b39a186389"
+			"Comment": "2.0.0-13-g9e2c7b5",
+			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/client",
-			"Comment": "2.0.0-12-g84af03b",
-			"Rev": "84af03bdf12c624d1c30578f7f2f42b39a186389"
+			"Comment": "2.0.0-13-g9e2c7b5",
+			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/db",
-			"Comment": "2.0.0-12-g84af03b",
-			"Rev": "84af03bdf12c624d1c30578f7f2f42b39a186389"
+			"Comment": "2.0.0-13-g9e2c7b5",
+			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/env",
-			"Comment": "2.0.0-12-g84af03b",
-			"Rev": "84af03bdf12c624d1c30578f7f2f42b39a186389"
+			"Comment": "2.0.0-13-g9e2c7b5",
+			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/factor",
-			"Comment": "2.0.0-12-g84af03b",
-			"Rev": "84af03bdf12c624d1c30578f7f2f42b39a186389"
+			"Comment": "2.0.0-13-g9e2c7b5",
+			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/models",
-			"Comment": "2.0.0-12-g84af03b",
-			"Rev": "84af03bdf12c624d1c30578f7f2f42b39a186389"
+			"Comment": "2.0.0-13-g9e2c7b5",
+			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/routes",
-			"Comment": "2.0.0-12-g84af03b",
-			"Rev": "84af03bdf12c624d1c30578f7f2f42b39a186389"
+			"Comment": "2.0.0-13-g9e2c7b5",
+			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/utils",
-			"Comment": "2.0.0-12-g84af03b",
-			"Rev": "84af03bdf12c624d1c30578f7f2f42b39a186389"
+			"Comment": "2.0.0-13-g9e2c7b5",
+			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+		},
+		{
+			"ImportPath": "github.com/lavab/mailer/shared",
+			"Comment": "0.2.0-11-g1b75b21",
+			"Rev": "1b75b2198688445cbab96cc7065a5566cb46d3de"
+		},
+		{
+			"ImportPath": "github.com/lavab/pgp-manifest-go",
+			"Rev": "9099b00ef7e668ba7644013e600e0e9d861345df"
 		},
 		{
 			"ImportPath": "github.com/lavab/sockjs-go-client",

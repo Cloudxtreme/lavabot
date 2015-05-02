@@ -91,7 +91,7 @@ func main() {
 		pp := strings.Split(*passwords, ",")
 
 		if len(up) != len(pp) {
-			log.Fatal("usernames flag has more parts than the passwords flag")
+			log.Fatal("length of usernames and passwords is different")
 		}
 
 		for i, username := range up {

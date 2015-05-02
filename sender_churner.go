@@ -2,23 +2,42 @@ package main
 
 import (
 	"bytes"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
+	"net/mail"
+	"strings"
 
 	"github.com/bitly/go-nsq"
 	"github.com/blang/semver"
 	"github.com/lavab/api/client"
 	"github.com/lavab/api/routes"
+	"github.com/lavab/mailer/shared"
+	man "github.com/lavab/pgp-manifest-go"
+	"golang.org/x/crypto/openpgp"
 )
 
 type SenderEvent struct {
 	Name    string      `gorethink:"name"`
+	From    string      `gorethink:"from"`
 	Version string      `gorethink:"version"`
 	To      []string    `gorethink:"to"`
 	Input   interface{} `gorethink:"input"`
 }
 
 func initSender(username, password string) {
+	// Open the key file
+	/*keyFile, err := os.Open(keyPath)
+	if err != nil {
+		log.WithField("error", err.Error()).Fatal("Unable to open the private key file")
+		return
+	}
+
+	// Parse the key
+	keyring, err := openpgp.ReadArmoredKeyRing(r)*/
+	// jk, what am i smoking
+
 	api, err := client.New(*apiURL, 0)
 	if err != nil {
 		log.WithField("error", err.Error()).Fatal("Unable to connect to the Lavaboom API")
@@ -88,23 +107,102 @@ func initSender(username, password string) {
 			return err
 		}
 
-		// Send the email
-		resp, err := api.CreateEmail(&routes.EmailsCreateRequest{
-			Kind:        "raw",
-			To:          ev.To,
-			Body:        body.String(),
-			Subject:     subject.String(),
-			ContentType: "text/html",
-		})
-		if err != nil {
-			return err
+		// Send unencrypted
+		if !strings.HasSuffix(ev.To[0], "@lavaboom.com") {
+			// Send the email
+			resp, err := api.CreateEmail(&routes.EmailsCreateRequest{
+				Kind:        "raw",
+				To:          ev.To,
+				Body:        body.String(),
+				Subject:     subject.String(),
+				ContentType: "text/html",
+			})
+			if err != nil {
+				return err
+			}
+
+			// Log some debug info
+			log.Printf("Sent a \"%s\" email to %v - %v", subject.String(), ev.To, resp)
+
+			// We're done!
+			return nil
+		} else {
+			// Get user's key
+			key, err := api.GetKey(ev.To[0])
+			if err != nil {
+				return err
+			}
+
+			// Parse the key
+			keyReader := strings.NewReader(key.Key)
+			keyring, err := openpgp.ReadArmoredKeyRing(keyReader)
+			if err != nil {
+				return err
+			}
+
+			// Hash the subject
+			subjectHash := sha256.Sum256(subject.Bytes())
+
+			// Hash the body
+			bodyHash := sha256.Sum256(body.Bytes())
+
+			// Manifest definition
+			manifest := &man.Manifest{
+				Version: semver.Version{1, 0, 0, nil, nil},
+				From: &mail.Address{
+					Name:    ev.From,
+					Address: username + "@lavaboom.com",
+				},
+				To: []*mail.Address{
+					{
+						Address: ev.To[0],
+					},
+				},
+				Subject: subject.String(),
+				Parts: []*man.Part{
+					{
+						Hash:        hex.EncodeToString(bodyHash[:]),
+						ID:          "body",
+						ContentType: "text/html",
+						Size:        body.Len(),
+					},
+				},
+			}
+
+			// Encrypt the body
+			ebody, err := shared.EncryptAndArmor(body.Bytes(), keyring)
+			if err != nil {
+				return err
+			}
+
+			// Generate the manifest
+			sman, err := man.Write(manifest)
+			if err != nil {
+				return err
+			}
+			eman, err := shared.EncryptAndArmor(sman, keyring)
+			if err != nil {
+				return err
+			}
+
+			// Send the email
+			resp, err := api.CreateEmail(&routes.EmailsCreateRequest{
+				Kind:        "manifest",
+				To:          ev.To,
+				Body:        string(ebody),
+				Manifest:    string(eman),
+				SubjectHash: hex.EncodeToString(subjectHash[:]),
+			})
+			if err != nil {
+				return err
+			}
+
+			// Log some debug info
+			log.Printf("Sent an encrypted \"%s\" email to %v - %v", subject.String(), ev.To, resp)
+
+			// We're done!
+			return nil
 		}
-
-		// Log some debug info
-		log.Printf("Sent a \"%s\" email to %v - %v", subject.String(), ev.To, resp)
-
-		// We're done!
-		return nil
 	}))
 
 	cons.ConnectToNSQLookupd(*lookupdAddress)
