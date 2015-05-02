@@ -101,43 +101,43 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/api/cache",
-			"Comment": "2.0.0-13-g9e2c7b5",
-			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+			"Comment": "2.0.0-14-g26b692c",
+			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/client",
-			"Comment": "2.0.0-13-g9e2c7b5",
-			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+			"Comment": "2.0.0-14-g26b692c",
+			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/db",
-			"Comment": "2.0.0-13-g9e2c7b5",
-			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+			"Comment": "2.0.0-14-g26b692c",
+			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/env",
-			"Comment": "2.0.0-13-g9e2c7b5",
-			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+			"Comment": "2.0.0-14-g26b692c",
+			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/factor",
-			"Comment": "2.0.0-13-g9e2c7b5",
-			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+			"Comment": "2.0.0-14-g26b692c",
+			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/models",
-			"Comment": "2.0.0-13-g9e2c7b5",
-			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+			"Comment": "2.0.0-14-g26b692c",
+			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/routes",
-			"Comment": "2.0.0-13-g9e2c7b5",
-			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+			"Comment": "2.0.0-14-g26b692c",
+			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/utils",
-			"Comment": "2.0.0-13-g9e2c7b5",
-			"Rev": "9e2c7b5e548becff7fee4c1b343af058063a9701"
+			"Comment": "2.0.0-14-g26b692c",
+			"Rev": "26b692c2edee7d266854d87c24b18a9a347ddbc8"
 		},
 		{
 			"ImportPath": "github.com/lavab/mailer/shared",
