@@ -11,6 +11,7 @@ type Timer struct {
 	Version string      `gorethink:"version"`
 	Sender  string      `gorethink:"sender"`
 	To      []string    `gorethink:"to"`
+	From    string      `gorethink:"from"`
 	Input   interface{} `gorethink:"input"`
 }
 

@@ -50,6 +50,7 @@ func initChurner(change chan struct{}) {
 					Name:    *welcomeName,
 					Version: *welcomeVersion,
 					Sender:  "hello",
+					From:    "Felix from Lavaboom",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,
@@ -62,6 +63,7 @@ func initChurner(change chan struct{}) {
 					Name:    *gettingStartedName,
 					Version: *gettingStartedVersion,
 					Sender:  "hello",
+					From:    "Christine from Lavaboom",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,
@@ -74,6 +76,7 @@ func initChurner(change chan struct{}) {
 					Name:    *securityName,
 					Version: *securityVersion,
 					Sender:  "hello",
+					From:    "Andrei from Lavaboom",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,
@@ -86,6 +89,7 @@ func initChurner(change chan struct{}) {
 					Name:    *whatsUpName,
 					Version: *whatsUpVersion,
 					Sender:  "hello",
+					From:    "Lavabot from Lavaboom",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,
