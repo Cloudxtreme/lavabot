@@ -46,7 +46,7 @@ func initChurner(change chan struct{}) {
 				// 1. Welcome to Lavaboom
 				&Timer{
 					ID:      uniuri.NewLen(uniuri.UUIDLen),
-					Time:    time.Now().Add(time.Second * 30),
+					Time:    time.Now().Add(time.Second * 15),
 					Name:    *welcomeName,
 					Version: *welcomeVersion,
 					Sender:  "hello",
@@ -58,7 +58,7 @@ func initChurner(change chan struct{}) {
 				// 2. Getting started
 				&Timer{
 					ID:      uniuri.NewLen(uniuri.UUIDLen),
-					Time:    time.Now().Add(time.Second * 60),
+					Time:    time.Now().Add(time.Second * 30),
 					Name:    *gettingStartedName,
 					Version: *gettingStartedVersion,
 					Sender:  "hello",
