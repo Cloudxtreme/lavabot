@@ -63,7 +63,7 @@ func initChurner(change chan struct{}) {
 					Name:    *gettingStartedName,
 					Version: *gettingStartedVersion,
 					Sender:  "hello",
-					From:    "Christine from Lavaboom <hello@lavaboom.com>",
+					From:    "Tine from Lavaboom <hello@lavaboom.com>",
 					To:      []string{ev.Email},
 					Input: map[string]interface{}{
 						"first_name": ev.FirstName,
