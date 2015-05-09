@@ -33,8 +33,10 @@ var (
 	whatsUpName           = flag.String("whatsup_name", "whatsup", "Name of the how's it going template to use")
 	whatsUpVersion        = flag.String("whatsup_version", "1.0.0", "Version of the how's it going template to use")
 
-	usernames = flag.String("usernames", "", "Usernames to use in the sender")
-	passwords = flag.String("passwords", "", "Passwords to use in the sender")
+	usernames     = flag.String("usernames", "", "Usernames to use in the sender")
+	passwords     = flag.String("passwords", "", "Passwords to use in the sender")
+	privateKeys   = flag.String("private_keys", "", "Private keys to use in the receiver")
+	grooveAddress = flag.String("groove_address", "", "Address of the Groove forwarding email")
 )
 
 var (
@@ -80,19 +82,26 @@ func main() {
 		}
 	}*/
 
+	up := strings.Split(*usernames, ",")
+	pp := strings.Split(*passwords, ",")
+	kp := strings.Split(*privateKeys, ",")
+
+	if len(up) != len(pp) {
+		log.Fatal("length of usernames and passwords is different")
+	}
+
+	if *enableReceiver && len(up) != len(kp) {
+		log.Fatal("length of keys doesn't match the length of usernames")
+	}
+
 	if *enableReceiver {
-		go initReceiver()
+		for i, username := range up {
+			go initReceiver(username, pp[i], kp[i])
+		}
 	}
 
 	if *enableSender {
 		go initTemplates()
-
-		up := strings.Split(*usernames, ",")
-		pp := strings.Split(*passwords, ",")
-
-		if len(up) != len(pp) {
-			log.Fatal("length of usernames and passwords is different")
-		}
 
 		for i, username := range up {
 			go initSender(username, pp[i])
