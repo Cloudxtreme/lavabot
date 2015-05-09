@@ -130,6 +130,8 @@ func initSender(username, password string) {
 			// Get user's key
 			key, err := api.GetKey(ev.To[0])
 			if err != nil {
+				m.Finish()
+				m.DisableAutoResponse()
 				return err
 			}
 
