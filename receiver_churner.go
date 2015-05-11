@@ -46,16 +46,22 @@ func initReceiver(username, password, keyPath string) {
 	api.Headers["Authorization"] = "Bearer " + token.ID
 
 	api.Subscribe(token.ID, func(ev *client.Event) {
+		log.Printf("INCOMING EVENT %s", ev.Type)
+
 		// Only handle receipts
 		if ev.Type != "receipt" {
 			return
 		}
+
+		log.Printf("GETTING EMAIL %s", ev.ID)
 
 		email, err := api.GetEmail(ev.ID)
 		if err != nil {
 			log.WithField("error", err.Error()).Error("Unable to get a received email")
 			return
 		}
+
+		log.Printf("GOT THE EMAIL %s", email.Name)
 
 		if email.Kind != "manifest" {
 			log.Errorf("Not dealing with an email manifest in %s", email.ID)
@@ -78,6 +84,8 @@ func initReceiver(username, password, keyPath string) {
 			log.WithField("error", err.Error()).Error("Unable to read email's body")
 			return
 		}
+
+		log.Printf("DECODED EMAIL BODY")
 
 		// Read manifest
 		input = strings.NewReader(email.Manifest)
@@ -102,9 +110,12 @@ func initReceiver(username, password, keyPath string) {
 			return
 		}
 
+		log.Printf("DECODED MANIFEST BODY")
+
 		// Sanitize contents if it has HTML
 		body := string(contents)
 		if manifest.ContentType != "text/plain" {
+			log.Printf("SANITIZED CONTENTS")
 			body = sanitize.HTML(string(contents))
 		}
 
