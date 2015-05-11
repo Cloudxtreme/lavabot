@@ -101,13 +101,14 @@ func initChurner(change chan struct{}) {
 
 			if err := r.Db(*rethinkdbDatabase).Table("hub_state").Insert(timers).Exec(session); err != nil {
 				log.WithField("error", err.Error()).Error("Unable to insert events into database")
+				stateLock.Unlock()
 				return err
 			}
 
 			// Sort it and ping the worker
 			sort.Sort(state)
-			change <- struct{}{}
 			stateLock.Unlock()
+			change <- struct{}{}
 		default:
 			return errors.New("Not implemented")
 		}
