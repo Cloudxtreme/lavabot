@@ -2,7 +2,6 @@ package main
 
 import (
 	"io/ioutil"
-	"os"
 	"strings"
 	"time"
 
@@ -15,16 +14,31 @@ import (
 )
 
 func initReceiver(username, password, keyPath string) {
-	keyFile, err := os.Open(keyPath)
+	keyFile, err := ioutil.ReadFile(keyPath)
 	if err != nil {
 		log.WithField("error", err.Error()).Fatal("Unable to open the private key file")
 		return
 	}
 
-	keyring, err := openpgp.ReadArmoredKeyRing(keyFile)
-	if err != nil {
-		log.WithField("error", err.Error()).Fatal("Unable to connect parse the key")
-		return
+	keyring := openpgp.EntityList{}
+
+	// This is just retarded
+	parts := strings.Split(string(keyFile), "-----\n-----")
+	for n, part := range parts {
+		if n != 0 {
+			part = "-----" + part
+		}
+
+		if n != len(parts)-1 {
+			part += "-----"
+		}
+
+		k1, err := openpgp.ReadArmoredKeyRing(strings.NewReader(part))
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		keyring = append(keyring, k1...)
 	}
 
 	api, err := client.New(*apiURL, 0)
@@ -104,6 +118,7 @@ func initReceiver(username, password, keyPath string) {
 			log.WithField("error", err.Error()).Error("Unable to read email's manifest")
 			return
 		}
+		log.Print(string(rawman))
 		manifest, err := man.Parse(rawman)
 		if err != nil {
 			log.WithField("error", err.Error()).Error("Unable to parse the manifest")
