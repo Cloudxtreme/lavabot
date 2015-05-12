@@ -33,10 +33,12 @@ var (
 	whatsUpName           = flag.String("whatsup_name", "whatsup", "Name of the how's it going template to use")
 	whatsUpVersion        = flag.String("whatsup_version", "1.0.0", "Version of the how's it going template to use")
 
-	usernames     = flag.String("usernames", "", "Usernames to use in the sender")
-	passwords     = flag.String("passwords", "", "Passwords to use in the sender")
-	privateKeys   = flag.String("private_keys", "", "Private keys to use in the receiver")
-	grooveAddress = flag.String("groove_address", "", "Address of the Groove forwarding email")
+	usernames        = flag.String("usernames", "", "Usernames to use in the sender")
+	passwords        = flag.String("passwords", "", "Passwords to use in the sender")
+	privateKeys      = flag.String("private_keys", "", "Private keys to use in the receiver")
+	grooveAddress    = flag.String("groove_address", "", "Address of the Groove forwarding email")
+	forwardingServer = flag.String("forwarding_server", "127.0.0.1:25", "Address of the SMTP server used for email forwarding")
+	dkimKey          = flag.String("dkim_key", "./dkim.key", "Path of the DKIM key")
 )
 
 var (

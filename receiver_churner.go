@@ -2,10 +2,12 @@ package main
 
 import (
 	"io/ioutil"
+	"net/smtp"
 	"strings"
-	"time"
 
-	"github.com/kennygrant/sanitize"
+	"github.com/alexcesaro/quotedprintable"
+	"github.com/dchest/uniuri"
+	"github.com/eaigner/dkim"
 	"github.com/lavab/api/client"
 	"github.com/lavab/api/routes"
 	man "github.com/lavab/pgp-manifest-go"
@@ -18,6 +20,21 @@ func initReceiver(username, password, keyPath string) {
 	if err != nil {
 		log.WithField("error", err.Error()).Fatal("Unable to open the private key file")
 		return
+	}
+
+	key, err := ioutil.ReadFile(*dkimKey)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	dc, err := dkim.NewConf("lavaboom.com", "mailer")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	dk, err := dkim.New(dc, key)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	keyring := openpgp.EntityList{}
@@ -128,11 +145,11 @@ func initReceiver(username, password, keyPath string) {
 		log.Printf("DECODED MANIFEST BODY")
 
 		// Sanitize contents if it has HTML
-		body := string(contents)
+		/*body := string(contents)
 		if manifest.ContentType != "text/plain" {
 			log.Printf("SANITIZED CONTENTS")
 			body = sanitize.HTML(string(contents))
-		}
+		}*/
 
 		// Stringify the to field
 		to := []string{}
@@ -140,23 +157,27 @@ func initReceiver(username, password, keyPath string) {
 			to = append(to, x.String())
 		}
 
-		resp, err := api.CreateEmail(&routes.EmailsCreateRequest{
-			Kind: "raw",
-			To:   []string{*grooveAddress},
-			Body: `---------- Forwarded message ----------
-From: ` + manifest.From.String() + `
-Date: ` + time.Now().Format(time.RFC1123) + `
-Subject: ` + manifest.Subject + `
-To: ` + strings.Join(to, ", ") + `
+		m1 := strings.Replace(`From: `+manifest.From.String()+`
+To: `+*grooveAddress+`
+MIME-Version: 1.0
+Message-ID: <`+uniuri.NewLen(32)+`@lavaboom.com>
+Content-Type: `+manifest.ContentType+`
+Content-Transfer-Encoding: quoted-printable
+Subject: `+quotedprintable.EncodeToString([]byte(manifest.Subject))+`
 
-` + body,
-			Subject: manifest.Subject,
-		})
+`+quotedprintable.EncodeToString(contents), "\n", "\r\n", -1)
+
+		signed, err := dk.Sign([]byte(m1))
 		if err != nil {
+			log.WithField("error", err.Error()).Error("Unable to sign an email")
+		}
+
+		// Send a new email
+		if err := smtp.SendMail(*forwardingServer, nil, manifest.From.Address, []string{*grooveAddress}, signed); err != nil {
 			log.WithField("error", err.Error()).Error("Unable to send an email")
 			return
 		}
 
-		log.Printf("Forwarded email %v from %s with title %s", resp, manifest.From.String(), manifest.Subject)
+		log.Printf("Forwarded email from %s with title %s", manifest.From.String(), manifest.Subject)
 	})
 }
