@@ -154,7 +154,7 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/pgp-manifest-go",
-			"Rev": "ce85d5da77d9575a574003947121e451b1cc7ac0"
+			"Rev": "808369071c762fdbf74e6614bf2a555ffda18498"
 		},
 		{
 			"ImportPath": "github.com/lavab/sockjs-go-client",
