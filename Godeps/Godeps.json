@@ -149,12 +149,12 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/mailer/shared",
-			"Comment": "0.2.0-13-gad9aba6",
-			"Rev": "ad9aba68d777257d8a4c6b3e3b3e6066e16ca6ab"
+			"Comment": "0.2.0-15-g569e792",
+			"Rev": "569e792af6dcbd983439abf4bd19bd181a94d87c"
 		},
 		{
 			"ImportPath": "github.com/lavab/pgp-manifest-go",
-			"Rev": "61972c9ca490832b9f6c9a982845279587b40a5b"
+			"Rev": "ce85d5da77d9575a574003947121e451b1cc7ac0"
 		},
 		{
 			"ImportPath": "github.com/lavab/sockjs-go-client",
