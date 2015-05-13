@@ -157,11 +157,22 @@ func initReceiver(username, password, keyPath string) {
 			to = append(to, x.String())
 		}
 
+		// Get the body's content type
+		var contentType string
+		for _, part := range manifest.Parts {
+			if part.ID == "body" {
+				contentType = part.ContentType
+			}
+		}
+		if contentType == "" {
+			contentType = manifest.ContentType
+		}
+
 		m1 := strings.Replace(`From: `+manifest.From.String()+`
 To: `+*grooveAddress+`
 MIME-Version: 1.0
 Message-ID: <`+uniuri.NewLen(32)+`@lavaboom.com>
-Content-Type: `+manifest.ContentType+`
+Content-Type: `+contentType+`
 Content-Transfer-Encoding: quoted-printable
 Subject: `+quotedprintable.EncodeToString([]byte(manifest.Subject))+`
 
