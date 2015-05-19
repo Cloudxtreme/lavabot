@@ -48,7 +48,7 @@
 		},
 		{
 			"ImportPath": "github.com/alexcesaro/quotedprintable",
-			"Rev": "1aaa60cffe2356fde640aba799418ef1282c8f79"
+			"Rev": "9b4a113f96b3263b5223fe9c5fd1d1115811b343"
 		},
 		{
 			"ImportPath": "github.com/bitly/go-nsq",
@@ -64,6 +64,10 @@
 			"ImportPath": "github.com/blang/semver",
 			"Comment": "v2.1.0",
 			"Rev": "9bf7bff48b0388cb75991e58c6df7d13e982f1f2"
+		},
+		{
+			"ImportPath": "github.com/cenkalti/backoff",
+			"Rev": "9831e1e25c874e0a0601b6dc43641071414eec7a"
 		},
 		{
 			"ImportPath": "github.com/cupcake/sigil/gen",
@@ -109,48 +113,48 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/api/cache",
-			"Comment": "2.0.0-20-geab0514",
-			"Rev": "eab051440caeb948d3b5ed25b37b19b28ff61c5e"
+			"Comment": "2.0.0-32-g4864797",
+			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/client",
-			"Comment": "2.0.0-20-geab0514",
-			"Rev": "eab051440caeb948d3b5ed25b37b19b28ff61c5e"
+			"Comment": "2.0.0-32-g4864797",
+			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/db",
-			"Comment": "2.0.0-20-geab0514",
-			"Rev": "eab051440caeb948d3b5ed25b37b19b28ff61c5e"
+			"Comment": "2.0.0-32-g4864797",
+			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/env",
-			"Comment": "2.0.0-20-geab0514",
-			"Rev": "eab051440caeb948d3b5ed25b37b19b28ff61c5e"
+			"Comment": "2.0.0-32-g4864797",
+			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/factor",
-			"Comment": "2.0.0-20-geab0514",
-			"Rev": "eab051440caeb948d3b5ed25b37b19b28ff61c5e"
+			"Comment": "2.0.0-32-g4864797",
+			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/models",
-			"Comment": "2.0.0-20-geab0514",
-			"Rev": "eab051440caeb948d3b5ed25b37b19b28ff61c5e"
+			"Comment": "2.0.0-32-g4864797",
+			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/routes",
-			"Comment": "2.0.0-20-geab0514",
-			"Rev": "eab051440caeb948d3b5ed25b37b19b28ff61c5e"
+			"Comment": "2.0.0-32-g4864797",
+			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/utils",
-			"Comment": "2.0.0-20-geab0514",
-			"Rev": "eab051440caeb948d3b5ed25b37b19b28ff61c5e"
+			"Comment": "2.0.0-32-g4864797",
+			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
 		},
 		{
 			"ImportPath": "github.com/lavab/mailer/shared",
-			"Comment": "0.2.0-15-g569e792",
-			"Rev": "569e792af6dcbd983439abf4bd19bd181a94d87c"
+			"Comment": "0.2.0-22-g9c22c1f",
+			"Rev": "9c22c1f571773d122a3cd689915a283f827fbe86"
 		},
 		{
 			"ImportPath": "github.com/lavab/pgp-manifest-go",
@@ -158,7 +162,7 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/sockjs-go-client",
-			"Rev": "4fc7a0262b967a9ccd17de0dc8634dcf2e118791"
+			"Rev": "05b4ac892f3f2c1d0f9031cec709b691f4503844"
 		},
 		{
 			"ImportPath": "github.com/mreiferson/go-snappystream",
@@ -168,6 +172,16 @@
 		{
 			"ImportPath": "github.com/namsral/flag",
 			"Rev": "bd57b3fc9ada8271ff812ba54f938fe72749d969"
+		},
+		{
+			"ImportPath": "github.com/willf/bitset",
+			"Comment": "v1.0.0-17-g4b22041",
+			"Rev": "4b220417a489359f934045d0509d941a7a2a1038"
+		},
+		{
+			"ImportPath": "github.com/willf/bloom",
+			"Comment": "v1.0.0-38-g270f902",
+			"Rev": "270f902f15edc2c6ae171c30f1de3ce3ae59d30c"
 		},
 		{
 			"ImportPath": "github.com/zenazn/goji/web",
@@ -190,8 +204,8 @@
 			"Rev": "8fec09c61d5d66f460d227fd1df3473d7e015bc6"
 		},
 		{
-			"ImportPath": "gopkg.in/alexcesaro/quotedprintable.v1/internal",
-			"Rev": "1aaa60cffe2356fde640aba799418ef1282c8f79"
+			"ImportPath": "gopkg.in/alexcesaro/quotedprintable.v2/internal",
+			"Rev": "9b4a113f96b3263b5223fe9c5fd1d1115811b343"
 		}
 	]
 }
