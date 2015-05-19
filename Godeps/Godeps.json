@@ -162,7 +162,7 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/sockjs-go-client",
-			"Rev": "05b4ac892f3f2c1d0f9031cec709b691f4503844"
+			"Rev": "9343bfb47bb4d677650b9716a2c6da6645612084"
 		},
 		{
 			"ImportPath": "github.com/mreiferson/go-snappystream",
