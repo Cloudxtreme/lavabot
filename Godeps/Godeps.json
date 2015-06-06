@@ -1,6 +1,9 @@
 {
 	"ImportPath": "github.com/lavab/lavabot",
 	"GoVersion": "go1.4",
+	"Packages": [
+		"./..."
+	],
 	"Deps": [
 		{
 			"ImportPath": "code.google.com/p/go.crypto/pbkdf2",
@@ -47,10 +50,6 @@
 			"Rev": "47ca2bbf229311c9b8b96a9188ae37790250757b"
 		},
 		{
-			"ImportPath": "github.com/alexcesaro/quotedprintable",
-			"Rev": "9b4a113f96b3263b5223fe9c5fd1d1115811b343"
-		},
-		{
 			"ImportPath": "github.com/bitly/go-nsq",
 			"Comment": "v1.0.4-2-gd76cbe0",
 			"Rev": "d76cbe0746446bc6ff540042dde4d074a962dfde"
@@ -83,16 +82,16 @@
 			"Rev": "396b73a566d0993675357e6648bb98587a6162b4"
 		},
 		{
-			"ImportPath": "github.com/eaigner/dkim",
-			"Rev": "6fe4a7ee9cfbd7eabb09b88c9fa4a9885dd3a628"
-		},
-		{
 			"ImportPath": "github.com/garyburd/redigo/internal",
 			"Rev": "535138d7bcd717d6531c701ef5933d98b1866257"
 		},
 		{
 			"ImportPath": "github.com/garyburd/redigo/redis",
 			"Rev": "535138d7bcd717d6531c701ef5933d98b1866257"
+		},
+		{
+			"ImportPath": "github.com/getsentry/raven-go",
+			"Rev": "c8f8fb7c415203f52ca882e2661d21bc6dcb54d7"
 		},
 		{
 			"ImportPath": "github.com/gokyle/hotp",
@@ -113,48 +112,48 @@
 		},
 		{
 			"ImportPath": "github.com/lavab/api/cache",
-			"Comment": "2.0.0-32-g4864797",
-			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
+			"Comment": "2.0.2-12-g37d96a3",
+			"Rev": "37d96a377776e9a3009e6ce2bae986d004a61c6c"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/client",
-			"Comment": "2.0.0-32-g4864797",
-			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
+			"Comment": "2.0.2-12-g37d96a3",
+			"Rev": "37d96a377776e9a3009e6ce2bae986d004a61c6c"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/db",
-			"Comment": "2.0.0-32-g4864797",
-			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
+			"Comment": "2.0.2-12-g37d96a3",
+			"Rev": "37d96a377776e9a3009e6ce2bae986d004a61c6c"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/env",
-			"Comment": "2.0.0-32-g4864797",
-			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
+			"Comment": "2.0.2-12-g37d96a3",
+			"Rev": "37d96a377776e9a3009e6ce2bae986d004a61c6c"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/factor",
-			"Comment": "2.0.0-32-g4864797",
-			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
+			"Comment": "2.0.2-12-g37d96a3",
+			"Rev": "37d96a377776e9a3009e6ce2bae986d004a61c6c"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/models",
-			"Comment": "2.0.0-32-g4864797",
-			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
+			"Comment": "2.0.2-12-g37d96a3",
+			"Rev": "37d96a377776e9a3009e6ce2bae986d004a61c6c"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/routes",
-			"Comment": "2.0.0-32-g4864797",
-			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
+			"Comment": "2.0.2-12-g37d96a3",
+			"Rev": "37d96a377776e9a3009e6ce2bae986d004a61c6c"
 		},
 		{
 			"ImportPath": "github.com/lavab/api/utils",
-			"Comment": "2.0.0-32-g4864797",
-			"Rev": "4864797c3287d37ad1306ee796f577a28736ba91"
+			"Comment": "2.0.2-12-g37d96a3",
+			"Rev": "37d96a377776e9a3009e6ce2bae986d004a61c6c"
 		},
 		{
 			"ImportPath": "github.com/lavab/mailer/shared",
-			"Comment": "0.2.0-22-g9c22c1f",
-			"Rev": "9c22c1f571773d122a3cd689915a283f827fbe86"
+			"Comment": "0.2.0-37-ge4928bc",
+			"Rev": "e4928bc1e79365ab7c53b8943f3d6afdeaf0df09"
 		},
 		{
 			"ImportPath": "github.com/lavab/pgp-manifest-go",
@@ -190,22 +189,15 @@
 		},
 		{
 			"ImportPath": "golang.org/x/crypto/cast5",
-			"Comment": "null-233",
-			"Rev": "8fec09c61d5d66f460d227fd1df3473d7e015bc6"
+			"Rev": "c10c31b5e94b6f7a0283272dc2bb27163dcea24b"
 		},
 		{
 			"ImportPath": "golang.org/x/crypto/openpgp",
-			"Comment": "null-233",
-			"Rev": "8fec09c61d5d66f460d227fd1df3473d7e015bc6"
+			"Rev": "c10c31b5e94b6f7a0283272dc2bb27163dcea24b"
 		},
 		{
 			"ImportPath": "golang.org/x/crypto/ripemd160",
-			"Comment": "null-233",
-			"Rev": "8fec09c61d5d66f460d227fd1df3473d7e015bc6"
-		},
-		{
-			"ImportPath": "gopkg.in/alexcesaro/quotedprintable.v2/internal",
-			"Rev": "9b4a113f96b3263b5223fe9c5fd1d1115811b343"
+			"Rev": "c10c31b5e94b6f7a0283272dc2bb27163dcea24b"
 		}
 	]
 }

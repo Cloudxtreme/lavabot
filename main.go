@@ -20,9 +20,8 @@ var (
 	rethinkdbAddress  = flag.String("rethinkdb_address", "127.0.0.1:28015", "Address of the RethinkDB server")
 	rethinkdbDatabase = flag.String("rethinkdb_database", "lavabot", "RethinkDB database to use")
 
-	enableHub      = flag.Bool("enable_hub", true, "Enable hub module")
-	enableReceiver = flag.Bool("enable_receiver", true, "Enable receiver module")
-	enableSender   = flag.Bool("enable_sender", true, "Enable sender module")
+	enableHub    = flag.Bool("enable_hub", true, "Enable hub module")
+	enableSender = flag.Bool("enable_sender", true, "Enable sender module")
 
 	welcomeName           = flag.String("welcome_name", "welcome", "Name of the welcome template to use")
 	welcomeVersion        = flag.String("welcome_version", "1.0.0", "Version of the welcome template to use")
@@ -35,7 +34,6 @@ var (
 
 	usernames        = flag.String("usernames", "", "Usernames to use in the sender")
 	passwords        = flag.String("passwords", "", "Passwords to use in the sender")
-	privateKeys      = flag.String("private_keys", "", "Private keys to use in the receiver")
 	grooveAddress    = flag.String("groove_address", "", "Address of the Groove forwarding email")
 	forwardingServer = flag.String("forwarding_server", "127.0.0.1:25", "Address of the SMTP server used for email forwarding")
 	dkimKey          = flag.String("dkim_key", "./dkim.key", "Path of the DKIM key")
@@ -76,30 +74,11 @@ func main() {
 		r.Db(*rethinkdbDatabase).Table("hub_state").IndexCreate("time").Exec(session)
 	}
 
-	/*if *enableSender || *enableReceiver {
-		var err error
-		api, err = client.New(*apiURL, 0)
-		if err != nil {
-			log.WithField("error", err.Error).Fatal("Unable to connect to the Lavaboom API")
-		}
-	}*/
-
 	up := strings.Split(*usernames, ",")
 	pp := strings.Split(*passwords, ",")
-	kp := strings.Split(*privateKeys, ",")
 
 	if len(up) != len(pp) {
 		log.Fatal("length of usernames and passwords is different")
-	}
-
-	if *enableReceiver && len(up) != len(kp) {
-		log.Fatal("length of keys doesn't match the length of usernames")
-	}
-
-	if *enableReceiver {
-		for i, username := range up {
-			go initReceiver(username, pp[i], kp[i])
-		}
 	}
 
 	if *enableSender {
